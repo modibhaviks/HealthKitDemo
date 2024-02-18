@@ -46,7 +46,7 @@ class HealthKitManager {
         var heartRateAverage: Double = 0
         
         let sampleQuery = HKSampleQuery.init(sampleType: quantityType,
-                                             predicate: getPastHoursPredicate(pastHour: -24),
+                                             predicate: getPastHoursPredicate(pastHour: -1),
                                              limit: HKObjectQueryNoLimit,
                                              sortDescriptors: [sortDescriptor],
                                              resultsHandler: { (query, results, error) in
@@ -81,7 +81,7 @@ class HealthKitManager {
         var totalStepCount:Double = 0
         let query = HKStatisticsQuery.init(
             quantityType: stepCountType,
-            quantitySamplePredicate: getPastHoursPredicate(pastHour: -24),
+            quantitySamplePredicate: getPastHoursPredicate(pastHour: -1),
             options: [HKStatisticsOptions.cumulativeSum, HKStatisticsOptions.separateBySource]
         ) { (query, results, error) in
             
